@@ -1,0 +1,227 @@
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(nullable NSString *)reuseIdentifier {
+    if (self= [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+//        self.contentView.backgroundColor = kBackColor;
+        self.selectionStyle =UITableViewCellSelectionStyleNone;
+        
+        
+        
+        _imgHead = [UIImageView new];
+        _imgHead.backgroundColor = kBackColor;
+        
+        
+        _lblName = [UILabel new];
+        _lblName.font = systemFont(15);
+        _lblName.textColor = kDeepColor;
+        _lblName.textAlignment = NSTextAlignmentLeft;
+        
+        _lblDetail = [UILabel new];
+        _lblDetail.font =systemFont(13);
+        _lblDetail.textColor = kBodyColor;
+        _lblDetail.textAlignment = NSTextAlignmentLeft;
+        
+        _btnStatus = [UIButton new];
+        _btnStatus.titleLabel.font = systemFont(13);
+        
+        
+        _lblline= [UILabel new];
+        _lblline.backgroundColor = kLineColor;
+
+    
+        [self.contentView sd_addSubviews:@[_imgHead,_lblName,_lblDetail,_btnStatus,_lblline]];
+        
+        _btnStatus.hidden =NO;
+        _imgHead.sd_cornerRadius =@25;
+        _imgHead.sd_layout
+        .centerYEqualToView(self.contentView)
+        .leftSpaceToView(self.contentView, 10)
+        .widthIs(50)
+        .heightIs(50);
+
+        _lblName.sd_layout
+        .leftSpaceToView(_imgHead, 8)
+        .topSpaceToView(self.contentView, 16)
+        .rightSpaceToView(self.contentView, 80)
+        .heightIs(18);
+
+        _lblDetail.sd_layout
+        .topSpaceToView(_lblName, 10)
+        .leftSpaceToView(_imgHead, 8)
+        .rightSpaceToView(self.contentView, 80)
+        .heightIs(13);
+
+        _btnStatus.sd_layout
+        .centerYEqualToView(self.contentView)
+        .rightSpaceToView(self.contentView,10)
+        .widthIs(60)
+        .heightIs(25);
+
+        _lblline.sd_layout
+        .leftSpaceToView(self.contentView, 10)
+        .rightSpaceToView(self.contentView, 10)
+        .bottomSpaceToView(self.contentView, 0)
+        .heightIs(0.5);
+
+        
+    }
+    return self;
+}
+
+//-(NSArray *)arrFirstTitle{
+//    if (!_arrFirstTitle) {
+//        _arrFirstTitle = @[@"商城好友",@"通讯录好友"];
+//    }
+//    return _arrFirstTitle;
+//}
+//-(NSArray *)arrFirstImg{
+//    if (!_arrFirstImg) {
+//        _arrFirstImg = @[@"ic_logo_tong",@"ic_address_list"];
+//    }
+//    return _arrFirstImg;
+//
+//}
+//-(NSArray *)arrFirstDetail{
+//    if (!_arrFirstDetail) {
+//        _arrFirstDetail = @[@"他们也在链石商城，赶紧邀请加入到我的企业吧",@"他们还没入住链石商城，赶紧推荐好友到链石商城吧～"];
+//    }
+//    return _arrFirstDetail;
+//    
+//}
+//
+
+
+-(void)setIndexPath:(NSIndexPath *)indexPath
+{
+    _indexPath =indexPath;
+//    if (_indexPath.row==0) {
+//        _imgHead.image = kImg(self.arrFirstImg[_indexPath.section]);
+//        _lblName.text = self.arrFirstTitle[_indexPath.section];
+//        _lblDetail.text = self.arrFirstDetail[_indexPath.section];
+//        _btnStatus.hidden =YES;
+//    
+//        _imgHead.sd_cornerRadius =@22;
+//        _imgHead.sd_layout
+//        .topSpaceToView(self.contentView, 12)
+//        .leftSpaceToView(self.contentView, 10)
+//        .widthIs(45)
+//        .heightIs(45);
+//        
+//        _lblName.sd_layout
+//        .topSpaceToView(self.contentView, 14)
+//        .leftSpaceToView(_imgHead, 8)
+//        .rightSpaceToView(self.contentView, 10)
+//        .heightIs(18);
+//        
+//        _lblDetail.sd_layout
+//        .topSpaceToView(_lblName, 10)
+//        .leftSpaceToView(_imgHead, 6)
+//        .rightSpaceToView(self.contentView, 10)
+//        .heightIs(13);
+//        
+//        
+//        
+//        _lblline.sd_layout
+//        .leftSpaceToView(self.contentView, 0)
+//        .rightSpaceToView(self.contentView, 0)
+//        .bottomSpaceToView(self.contentView, 0)
+//        .heightIs(0.5);
+//        
+//    }else{
+//        _btnStatus.hidden =NO;
+//        _imgHead.sd_cornerRadius =@25;
+//        _imgHead.sd_layout
+//        .centerYEqualToView(self.contentView)
+//        .leftSpaceToView(self.contentView, 10)
+//        .widthIs(50)
+//        .heightIs(50);
+//        
+//        _lblName.sd_layout
+//        .leftSpaceToView(_imgHead, 8)
+//        .topSpaceToView(self.contentView, 16)
+//        .rightSpaceToView(self.contentView, 80)
+//        .heightIs(18);
+//        
+//        _lblDetail.sd_layout
+//        .topSpaceToView(_lblName, 10)
+//        .leftSpaceToView(_imgHead, 8)
+//        .rightSpaceToView(self.contentView, 80)
+//        .heightIs(13);
+//        
+//        _btnStatus.sd_layout
+//        .centerYEqualToView(self.contentView)
+//        .rightSpaceToView(self.contentView,10)
+//        .widthIs(60)
+//        .heightIs(25);
+//        
+//        _lblline.sd_layout
+//        .leftSpaceToView(self.contentView, 10)
+//        .rightSpaceToView(self.contentView, 10)
+//        .bottomSpaceToView(self.contentView, 0)
+//        .heightIs(0.5);
+//    }
+
+    
+}
+//        [("未注册")]
+//        NonRegister,
+//        [("是游客")]
+//        IsNormalUser,
+//        [("是同事")]
+//        IsColleague,        
+//        [("发送过邀请加入公司的邀请过")]
+//    HasInviteCompany
+
+-(void)setUserInfo:(ContactInfo *)userInfo{
+
+//    if (userInfo.pic.length!=0) {
+//       [_imgHead sd_setImageWithURL:userInfo.pic.urlImg placeholderImage:kImg(@"ic_default")];
+//    }else if (userInfo.imgData.length!=0) {
+//        _imgHead.image = [UIImage imageWithData:userInfo.imgData];
+//    }else{
+//        _imgHead.image = kImg(@"ic_default");
+//    }
+    
+
+    _lblName.text = userInfo.nickName;
+    _lblDetail.text =userInfo.phone;
+    _btnStatus.sd_cornerRadius =@4;
+    [_btnStatus.layer setBorderWidth:1.0];
+
+    if ([userInfo.status isEqualToString:@"NonRegister"]) { //未注册
+        [_btnStatus setTitle:@"+ 推荐" forState:UIControlStateNormal];
+        [_btnStatus setTitleColor:kTitleColor forState:UIControlStateNormal];
+        _btnStatus.layer.borderColor=kTitleColor.CGColor;
+
+
+    }else if ([userInfo.status isEqualToString:@"IsNormalUser"]) {//游客
+        [_btnStatus setTitle:@"+ 邀请" forState:UIControlStateNormal];
+        [_btnStatus setTitleColor:kRedColor forState:UIControlStateNormal];
+        _btnStatus.layer.borderColor=kRedColor.CGColor;
+
+    }else if ([userInfo.status isEqualToString:@"IsColleague"]) {//同事
+        [_btnStatus setTitle:@"已添加" forState:UIControlStateNormal];
+        [_btnStatus setTitleColor:kBorderColor forState:UIControlStateNormal];
+        
+        _btnStatus.layer.borderColor=kBorderColor.CGColor;
+
+    }else if ([userInfo.status isEqualToString:@"HasInviteCompany"]) {//"发送过邀请加入公司的邀请过
+        [_btnStatus setTitle:@"等待确认" forState:UIControlStateNormal];
+        [_btnStatus setTitleColor:kDeepColor forState:UIControlStateNormal];
+        [_btnStatus.layer setBorderWidth:0];
+    }else{
+        _btnStatus.hidden =YES;
+    }
+}
+
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    // Initialization code
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
+
+    // Configure the view for the selected state
+}
+
+@end
